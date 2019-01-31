@@ -11,11 +11,16 @@
 
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title>Meeting Timer</title>
+    <title><%= htmlWebpackPlugin.options.title %></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <% for (var css in htmlWebpackPlugin.files.css) { %>
+        <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+    <% } %>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 <body>
     <!--[if lt IE 7]>
@@ -72,7 +77,5 @@
             </div>
         </div>
     </div>
-
-    <script src="meetingTimer.js"></script>
 </body>
 </html>
