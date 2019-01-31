@@ -1,0 +1,190 @@
+$color-green: #3ec342;
+
+$circle-width: 80vw;
+$circle-height: $circle-width;
+$circle-inner-height: $circle-height - 40;
+$circle-inner-width: $circle-inner-height;
+
+
+
+body, html {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    background: #222;
+    color: #fff;    
+    font-family: sans-serif;
+    font-size: 14px;    
+}
+
+#play, audio {
+    display: none;
+}
+
+.container {
+    margin: 0 auto;
+    width: 100%;    
+    max-width: 900px;    
+}
+
+// Circle
+
+.circle-wrapper {
+    position: relative;
+    display: block;
+    height: auto;
+    width: $circle-width;
+    margin: 2em auto;
+    border-radius: 100%;
+    text-align: center;   
+    max-width: 900px;    
+    
+    @media (max-width: 480px) and (orientation: landscape) {
+        width: 45vw;
+    }
+
+    &:after {
+        position: absolute;
+        display: block;
+        height: $circle-height;
+        width: $circle-height;
+        left: 0;
+        top: 0;
+        content: attr(data-mins) ":" attr(data-secs);        
+        border-radius: 100%;        
+        font-size: 7vw;
+        text-shadow: 0 0 0.5em black;
+        width: 100%;
+        height: 100%;
+        max-width: 900px; 
+        display: flex;
+        align-items: center;
+        justify-content: center;     
+        
+        @media (orientation: landscape) {
+            font-size: 7vh;
+        }
+    }
+
+    .circle-svg {
+        width: 100%;
+        height: auto;
+        margin: 0 auto;        
+
+        @media (orientation: landscape) {
+            width: auto;
+            max-height: 70vh;
+        }
+    
+        path {
+            transition: stroke-dashoffset .2s linear;
+            stroke: #FF9F1E;
+            stroke-width: 4px;                        
+        }        
+    }
+
+    &.timer-running {
+        path {
+            stroke: #666;            
+        }
+
+        .circle-bar {
+            stroke: $color-green;
+        }
+    }
+
+    &.timer-finished {
+        path {
+            stroke: red;
+        }
+    }
+}
+
+
+
+// Controls
+  
+.controls-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    max-width: $circle-width;
+
+    & > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+        
+    button {
+        border: 0 none;
+        box-shadow: none;
+        color: #fff;
+        background: transparent;
+        font-size: 3rem;
+        outline: none;
+    }
+}
+
+
+// Number picker
+.number-picker {
+    display: inline-block;
+    position: relative;
+    display: inline-flex;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    width: 50px;    
+
+    > div {
+        width: 100%;
+        height: 100%;
+
+        min-width: 50px;
+        min-height: 50px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #fff;
+    }
+
+    .number-picker-control {     
+        cursor: pointer;           
+        
+        .number-picker-up {
+
+        }
+    
+        .number-picker-down {
+            
+        }
+    }    
+
+    .number-picker-input {
+        width: 80px;
+
+        input {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: 0 none;
+            color: #fff;
+            text-align: center;            
+            box-shadow: 0 none;
+            outline: none;            
+            transition: border-color .2s ease-in-out;
+            font-size: inherit;            
+
+            &:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+        }
+    }    
+
+    & + span {
+        font-size: 2rem;
+        padding: 20px;
+    }
+}

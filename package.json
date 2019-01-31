@@ -1,0 +1,20 @@
+{
+  "name": "MeetingTimer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "copy": "cp -r assets dist && cp src/*.js dist",
+    "compile:html": "html-includes --src src --dest dist",
+    "compile": "npm run compile:html",
+    "build": "npm run compile && scss --sourcemap=none -C src/style.scss:assets/css/style.css && npm run copy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.6.3",
+    "html-includes": "^4.0.0"
+  }
+}
