@@ -5,9 +5,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  entry: [    
-    './src/scss/style.scss',
-    './src/js/main.js',
+  entry: [
+    //'./src/scss/style.scss',
+    //'./src/js/main.js',
+    './app.js'
   ],
 
   devServer: {
@@ -17,10 +18,18 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Meeting Timer',
-      template: 'src/index.html'
+      template: 'src/index.html',
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true
+      },
     })
   ],
 
@@ -30,17 +39,14 @@ module.exports = {
   },
 
   module: {
-    rules: [
-      {
+    rules: [{
         test: /.scss$/,
-        use: [
+        use: [{
+            loader: 'style-loader',
+          },
           {
-            loader: 'file-loader',
-            options: {
-              name: '[name].css',
-              outputPath: '/'
-            }
-          },          
+            loader: 'css-loader',
+          },
           {
             loader: 'sass-loader',
             options: {
@@ -51,15 +57,15 @@ module.exports = {
       },
 
       {
-        test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         use: [{
           loader: 'file-loader',
           options: {
-            name: '[name].[ext]',
-            outputPath: 'fonts/',    // where the fonts will go
+            name: './assets/fonts/[name].[ext]',
+            mimetype: 'application/font-woff',
           }
         }]
-      },
+      }
     ]
   }
 };

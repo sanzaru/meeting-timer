@@ -5,23 +5,23 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js">
 <!--<![endif]-->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title>
+        <%= htmlWebpackPlugin.options.title %>
+    </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
-
     <% for (var css in htmlWebpackPlugin.files.css) { %>
-        <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+    <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
     <% } %>
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
+
 <body>
     <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. 
@@ -36,19 +36,19 @@
                 <path class="circle-bar" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                     fill="none" stroke="#444" ; stroke-width="1" ; stroke-dasharray="100, 100" />
             </svg>
-        </div>       
+        </div>
 
         <div class="controls-wrapper">
             <div>
                 <div class="number-picker">
                     <div class="number-picker-control number-picker-up">
-                        <span class="fas fa-chevron-up"></span>
+                        <span class="fas fa-angle-up"></span>
                     </div>
                     <div class="number-picker-input">
-                        <input value="1" class="minutes"> 
+                        <input value="1" class="minutes">
                     </div>
                     <div class="number-picker-control number-picker-down">
-                        <span class="fas fa-chevron-down"></span>
+                        <span class="fas fa-angle-down"></span>
                     </div>
                 </div>
 
@@ -56,13 +56,13 @@
 
                 <div class="number-picker">
                     <div class="number-picker-control number-picker-up">
-                        <span class="fas fa-chevron-up"></span>
+                        <span class="fas fa-angle-up"></span>
                     </div>
                     <div class="number-picker-input">
                         <input value="00" maxlength="4" class="seconds">
                     </div>
                     <div class="number-picker-control number-picker-down">
-                        <span class="fas fa-chevron-down"></span>
+                        <span class="fas fa-angle-down"></span>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@
                 <button class="btn-go">
                     <span class="fas fa-play"></span>
                 </button>
-        
+
                 <button class="btn-stop">
                     <span class="fas fa-stop"></span>
                 </button>
@@ -78,4 +78,5 @@
         </div>
     </div>
 </body>
+
 </html>
