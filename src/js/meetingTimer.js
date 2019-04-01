@@ -1,3 +1,10 @@
+/**
+ * Meeting timer class file
+ * A simple HTML 5 / CSS / JS meeting/countdown timer.
+ *
+ * @author Martin Albrecht <martin.albrecht@javacoffee.de>
+ * @license MIT
+ */
 const CLASSNAME_FA_PLAY = 'fa-play';
 //const CLASSNAME_FA_STOP = 'fa-stop';
 const CLASSNAME_FA_PAUSE = 'fa-pause';
