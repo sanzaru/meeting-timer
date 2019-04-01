@@ -34,6 +34,7 @@ npm start
 ```
 
 You can then open the URL http://localhost:8080/ in your browser.
+
 **Note:** All source code changes will update the site automatically.
 
 
