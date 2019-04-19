@@ -1,22 +1,44 @@
 @import 'font';
 
 $color-green: #3ec342;
+$color-orange: #FF9F1E;
+$color-blue: #1e5c9c;
+$color-black: #272727;
+$color-white: #fff;
+
+$color-background: $color-black;
+$color-foreground: $color-white;
+
+$color-circle-default: $color-blue;
+$color-circle-running-back: #ccc;
+$color-circle-running: $color-blue;
+$color-circle-finished: red;
 
 $circle-width: 80vw;
 $circle-height: $circle-width;
 $circle-inner-height: $circle-height - 40;
 $circle-inner-width: $circle-inner-height;
 
+$input-size: 40px;
 
 body,
 html {
     margin: 0;
     padding: 0;
     outline: none;
-    background: #222;
-    color: #fff;
-    font-family: sans-serif;
+    background: $color-background;
+    color: $color-foreground;
+    font-family: Verdana, Helvetica, sans-serif;
     font-size: 14px;
+}
+
+::selection {
+    background: $color-foreground;
+    color: $color-background;
+}
+::-moz-selection {
+    background: $color-foreground;
+    color: $color-background;
 }
 
 #play,
@@ -48,14 +70,12 @@ audio {
 
     &:after {
         position: absolute;
-        display: block;
-        height: $circle-height;
-        width: $circle-height;
         left: 0;
         top: 0;
         content: attr(data-mins) ":"attr(data-secs);
         border-radius: 100%;
-        font-size: 7vw;
+        font-size: 10vw;
+        font-weight: bold;
         text-shadow: 0 0 0.5em black;
         width: 100%;
         height: 100%;
@@ -65,7 +85,7 @@ audio {
         justify-content: center;
 
         @media (orientation: landscape) {
-            font-size: 7vh;
+            font-size: 10vh;
         }
     }
 
@@ -81,24 +101,25 @@ audio {
 
         path {
             transition: stroke-dashoffset .2s linear;
-            stroke: #FF9F1E;
-            stroke-width: 4px;
+            stroke: $color-circle-default;
+            stroke-width: 2px;
         }
     }
 
     &.timer-running {
-        path {
-            stroke: #666;
+        path:first-child {
+            //stroke: $color-circle-running-back;
+            opacity: 0.3;
         }
 
         .circle-bar {
-            stroke: $color-green;
+            stroke: $color-circle-running;
         }
     }
 
     &.timer-finished {
         path {
-            stroke: red;
+            stroke: $color-circle-finished;
         }
     }
 }
@@ -109,20 +130,24 @@ audio {
 
 .controls-wrapper {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin: 0 auto;
-    max-width: $circle-width;
+    max-width: $circle-width / 2;
 
     >div {
         display: flex;
         align-items: center;
         justify-content: center;
+
+        &:not(:last-of-type) {
+            margin-right: 20px;
+        }
     }
 
     button {
         border: 0 none;
         box-shadow: none;
-        color: #fff;
+        color: $color-white;
         background: transparent;
         font-size: 3rem;
         outline: none;
@@ -133,24 +158,32 @@ audio {
 
 // Number picker
 .number-picker {
-    display: inline-block;
     position: relative;
     display: inline-flex;
     flex-wrap: wrap;
     font-size: 1rem;
-    width: 50px;
+    width: $input-size;
 
     >div {
+        box-sizing: border-box;
         width: 100%;
         height: 100%;
 
-        min-width: 50px;
-        min-height: 50px;
+        min-width: $input-size;
+        min-height: $input-size;
 
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 1px solid #fff;
+
+        &:nth-child(1),
+        &:nth-child(3) {
+            font-size: 1.5rem;
+
+            > span {
+                font-weight: bold;
+            }
+        }
     }
 
     .number-picker-control {
@@ -158,19 +191,21 @@ audio {
     }
 
     .number-picker-input {
-        width: 80px;
-
         input {
             width: 100%;
             height: 100%;
             background: transparent;
             border: 0 none;
-            color: #fff;
+            color: $color-white;
             text-align: center;
-            box-shadow: 0 none;
+            box-shadow: none;
             outline: none;
-            transition: border-color .2s ease-in-out;
             font-size: inherit;
+            padding-bottom: 5px;
+
+            &:active, &:focus {
+                border-bottom: 1px solid $color-white;
+            }
 
             &:disabled {
                 opacity: 0.5;

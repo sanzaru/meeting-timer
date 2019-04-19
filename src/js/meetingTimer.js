@@ -6,7 +6,6 @@
  * @license MIT
  */
 const CLASSNAME_FA_PLAY = 'fa-play';
-//const CLASSNAME_FA_STOP = 'fa-stop';
 const CLASSNAME_FA_PAUSE = 'fa-pause';
 
 export default class MeetingTimer {
@@ -72,7 +71,7 @@ export default class MeetingTimer {
 
     _setLabelText(mins, secs) {
         this.circleWrapper.setAttribute('data-mins', mins);
-        this.circleWrapper.setAttribute('data-secs', this._getTimeText(secs));
+        this.circleWrapper.setAttribute('data-secs', MeetingTimer._getTimeText(secs));
     }
 
     _setButtonLabel() {
@@ -112,7 +111,7 @@ export default class MeetingTimer {
         this._setLabelText(this.mins, this.secs);
         this.timerRunning = false;
 
-        this.circleWrapper.classList.remove('timer-running')
+        this.circleWrapper.classList.remove('timer-running');
         this.circleWrapper.classList.remove('timer-finished');
         this.circleBar.setAttribute('stroke-dasharray', '0, 100');
         this.circleWrapper.setAttribute('data-pct', '100');
@@ -157,7 +156,7 @@ export default class MeetingTimer {
             this.totalSeconds--;
             const rest = this.totalSeconds % 60;
 
-            if (rest == 59) {
+            if (rest === 59) {
                 this.mins--;
             }
 
@@ -189,7 +188,7 @@ export default class MeetingTimer {
         }
     }
 
-    _getTimeText(time) {
+    static _getTimeText(time) {
         if (time) {
             return (time < 10) ? '0' + time : String(time);
         }
