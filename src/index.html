@@ -4,79 +4,138 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="en">
-<!--<![endif]-->
+  <!--<![endif]-->
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
 
     <title>
-        <%= htmlWebpackPlugin.options.title %>
+      <%= htmlWebpackPlugin.options.title %>
     </title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <% for (var css in htmlWebpackPlugin.files.css) { %>
-    <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+    <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet" />
     <% } %>
-</head>
+  </head>
 
-<body>
+  <body>
     <!--[if lt IE 7]>
-        <p class="browsehappy">You are using an <strong>outdated</strong> browser. 
-            Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
     <![endif]-->
 
     <div class="container">
-        <div class="circle-wrapper" data-pct="100" data-mins="1" data-secs="00">
-            <svg viewBox="0 0 36 36" class="circle-svg">
-                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none"
-                    stroke="#444" stroke-width="1" stroke-dasharray="100, 100" />
-                <path class="circle-bar" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                    fill="none" stroke="#444" stroke-width="1" stroke-dasharray="100, 100" />
-            </svg>
-        </div>
+      <div class="settings-toggle fa fa-cog"></div>
 
-        <div class="controls-wrapper">
-            <div>
-                <div class="number-picker">
-                    <div class="number-picker-control number-picker-up">
-                        <span class="fas fa-angle-up"></span>
-                    </div>
-                    <div class="number-picker-input">
-                        <label><input value="1" class="minutes"></label>
-                    </div>
-                    <div class="number-picker-control number-picker-down">
-                        <span class="fas fa-angle-down"></span>
-                    </div>
-                </div>
+      <div class="circle-wrapper" data-pct="100" data-mins="1" data-secs="00">
+        <svg viewBox="0 0 36 36" class="circle-svg">
+          <path
+            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+            fill="none"
+            stroke="#444"
+            stroke-width="1"
+            stroke-dasharray="100, 100"
+          />
+          <path
+            class="circle-bar"
+            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+            fill="none"
+            stroke="#444"
+            stroke-width="1"
+            stroke-dasharray="100, 100"
+          />
+        </svg>
+      </div>
 
-                <span>:</span>
-
-                <div class="number-picker">
-                    <div class="number-picker-control number-picker-up">
-                        <span class="fas fa-angle-up"></span>
-                    </div>
-                    <div class="number-picker-input">
-                        <label><input value="00" maxlength="4" class="seconds"></label>
-                    </div>
-                    <div class="number-picker-control number-picker-down">
-                        <span class="fas fa-angle-down"></span>
-                    </div>
-                </div>
+      <div class="controls-wrapper">
+        <div>
+          <div class="number-picker">
+            <div class="number-picker-control number-picker-up">
+              <span class="fas fa-angle-up"></span>
             </div>
-            <div>
-                <button class="btn-go">
-                    <span class="fas fa-play"></span>
-                </button>
-
-                <button class="btn-stop">
-                    <span class="fas fa-stop"></span>
-                </button>
+            <div class="number-picker-input">
+              <label><input value="1" class="minutes"/></label>
             </div>
+            <div class="number-picker-control number-picker-down">
+              <span class="fas fa-angle-down"></span>
+            </div>
+          </div>
+
+          <span>:</span>
+
+          <div class="number-picker">
+            <div class="number-picker-control number-picker-up">
+              <span class="fas fa-angle-up"></span>
+            </div>
+            <div class="number-picker-input">
+              <label><input value="00" maxlength="4" class="seconds"/></label>
+            </div>
+            <div class="number-picker-control number-picker-down">
+              <span class="fas fa-angle-down"></span>
+            </div>
+          </div>
         </div>
+        <div>
+          <button class="btn-go">
+            <span class="fas fa-play"></span>
+          </button>
+
+          <button class="btn-stop">
+            <span class="fas fa-stop"></span>
+          </button>
+        </div>
+      </div>
     </div>
-</body>
 
+    <div class="settings-container">
+      <div class="container">
+        <div class="settings-form">
+          <div class="settings-form-header">
+            <span>Settings</span>
+          </div>
+
+          <div class="settings-form-body">
+            <form action="" method="POST">
+              <div class="form-group">
+                <label>
+                  <input
+                    required
+                    name="countAlarm"
+                    type="number"
+                    maxlength="2"
+                    min="0"
+                    max="99"
+                    value="0"
+                    class="form-control"
+                  />
+
+                  &nbsp;times of alarm playback
+                </label>
+
+                <div class="clearfix">
+                  <small
+                    ><span class="fa fa-question-circle"></span> Determine how
+                    many times the alarm sound will be played. A value of 0 will
+                    play it infinitely.</small
+                  >
+                </div>
+              </div>
+
+              <div class="form-group text-right">
+                <button class="settings-form-save btn btn-secondary">
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
