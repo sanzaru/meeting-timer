@@ -1,21 +1,27 @@
 {
   "name": "meeting-timer",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A simple HTML 5 / CSS / JS meeting/countdown timer.",
   "private": false,
+  "repository": "github:sanzaru/meeting-timer",
   "scripts": {
     "webpack": "webpack --mode=production",
     "build": "npm run webpack",
-    "prepare": "npm run build && autover",
-    "start": "webpack-dev-server --mode=development"
+    "version": "autover",
+    "start": "webpack-dev-server --mode=development",
+    "deploy": "npm run webpack && npm run version && npm publish && git commit"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prepare && git add dist package.json",
+      "pre-commit": "",
       "pre-push": ""
     }
   },
-  "keywords": [],
+  "keywords": [
+    "meeting",
+    "timer",
+    "countdown"
+  ],
   "author": "Martin Albrecht <martin.albrecht@javacoffee.de>",
   "license": "MIT",
   "devDependencies": {
