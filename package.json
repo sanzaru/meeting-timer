@@ -1,6 +1,6 @@
 {
   "name": "meeting-timer",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A simple HTML 5 / CSS / JS meeting/countdown timer.",
   "private": false,
   "scripts": {
