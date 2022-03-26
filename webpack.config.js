@@ -12,8 +12,7 @@ module.exports = {
   ],
 
   devServer: {
-    contentBase: './dist',
-    publicPath: '/',
+    static: './',
     host: 'localhost', // Change to '0.0.0.0' for external facing server
   },
 
@@ -50,21 +49,19 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              outputStyle: 'compressed'
+              sassOptions: {
+                outputStyle: 'compressed'
+              }
             }
           }
         ]
       },
 
       {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            name: './assets/fonts/[name].[ext]',
-            mimetype: 'application/font-woff',
-          }
-        }]
+        test: /\.(woff|woff2)$/,
+        use: {
+          loader: 'url-loader',
+        },
       }
     ]
   }
