@@ -28,6 +28,9 @@ export default class MeetingTimer {
     this.controls = document.querySelector('.controls-wrapper');
     if (!this.controls) throw 'Error: Controls wrapper not found';
 
+    this.circleControls = document.querySelector('.circle-controls');
+    if (!this.circleControls) throw 'Error: Circle controls wrapper not found';
+
     this.circleWrapper = document.querySelector('.circle-wrapper');
     if (!this.circleWrapper) throw 'Error: Circle wrapper not found';
 
@@ -39,7 +42,7 @@ export default class MeetingTimer {
     if (!this.inputMinutes || !this.inputSeconds)
       throw 'Error: Control inputs not found';
 
-    this.goButton = this.controls.querySelector('.btn-go');
+    this.goButton = this.circleControls.querySelector('.btn-go');
     if (!this.goButton) throw 'Error: Go button not found';
 
     this.goButtonInner = this.goButton.querySelector('span');
@@ -49,13 +52,14 @@ export default class MeetingTimer {
       if (this.timerRunning) {
         this._pause();
       } else {
+        this.controls.setAttribute('hidden', '');
         this._init();
         this._beep();
         this._setInputState();
       }
     });
 
-    this.stopButton = this.controls.querySelector('.btn-stop');
+    this.stopButton = this.circleControls.querySelector('.btn-stop');
     if (!this.stopButton) throw 'Error: Stop button not found';
 
     this.stopButton.addEventListener('click', () => {
@@ -139,6 +143,7 @@ export default class MeetingTimer {
     this.circleWrapper.setAttribute('data-pct', '100');
 
     this.goButton.removeAttribute('hidden');
+    this.controls.removeAttribute('hidden');
 
     this._setButtonLabel();
     this._setInputState();
@@ -168,8 +173,6 @@ export default class MeetingTimer {
     this.circleBar.setAttribute('stroke-dasharray', '0, 100');
     this.circleWrapper.classList.remove('timer-running');
     this.circleWrapper.classList.add('timer-finished');
-
-    this.goButton.setAttribute('hidden', '');
 
     this.snd.muted = false;
     this.muted = false;

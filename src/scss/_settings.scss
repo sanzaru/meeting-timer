@@ -19,7 +19,7 @@
   font-size: 1.5rem;
   z-index: 4;
   height: 0;
-  transition: height 0.4s ease-in;
+  transition: height 0.4s linear;
 
   &.in {
     height: 100%;
@@ -29,7 +29,7 @@
     color: $color-gray;
     padding: 0 20px 10px;
     margin: 0 auto;
-    max-width: 80vw;
+    max-width: 550px;
     padding: 1em 0;
 
     .settings-form-header {
@@ -48,6 +48,8 @@
     .form-group {
       padding: 10px;
       margin-bottom: 20px;
+      border-radius: 7px;
+
       &:not(:last-of-type) {
         background: rgba(255, 255, 255, 0.3);
       }
@@ -67,7 +69,7 @@
       font-size: 1.2rem;
       padding: 1rem 3rem;
       cursor: pointer;
-      transition: background-color 1s ease-in-out, color 1s ease-in-out;
+      transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
 
       &:hover {
         background-color: $color-gray;
